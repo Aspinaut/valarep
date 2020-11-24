@@ -1,0 +1,6 @@
+.card {
+  background-image: url('bg-cv.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+}

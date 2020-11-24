@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main_body {
+
+}
+.main_title {
+
+}
+.footer {
+
+}
+.top_navbar {
+
+}
+.tabs {
+  background-color: #2D2D2F;
+}
+.tabs img {
+  width: 15%;
+}
+.tabs ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style-type: none;
+  
+  margin-top: 0;
+}
+#cart {
+  justify-content:
+  flex-end;
+}
+.jumbotron img {
+  width: 100%;
+}

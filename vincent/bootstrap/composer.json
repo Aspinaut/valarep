@@ -1,0 +1,15 @@
+{
+    "name": "vmasse/bootstrap",
+    "description": "bootstrap project",
+    "type": "twbs/bootstrap",
+    "require": {
+        "twbs/bootstrap": "^4.5",
+        "components/jquery": "^3.5"
+    },
+    "authors": [
+        {
+            "name": "vmasse",
+            "email": "vincentmasse@protonmail.com"
+        }
+    ]
+}

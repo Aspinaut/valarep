@@ -1,0 +1,66 @@
+.color {
+  color: blue;
+}
+
+@media(max-width: 500px) {
+  .color {
+    color: red;
+  }
+}
+
+@media(min-width: 500px) and (max-width: 1000px)  {
+  .color {
+    color: white;
+  }
+}
+
+/* voir les différents modes d'affichage
+dans le fichier media_formats.png
+en remplaçant tv par un autre format, on
+applique les changements inscrits dans le block
+seulement dans le cas où le format est atteints
+*/
+
+@media tv {
+  .color {
+    color: yellow;
+  }
+}
+
+#col_1  {
+  background-color: rgba(43, 113, 59, 0.35);
+}
+#col_2  {
+  background-color: rgba(130, 63, 19, 0.35);
+}
+#col_3  {
+  background-color: rgba(29, 155, 226, 0.35);
+}
+#col_4  {
+  background-color: rgba(150, 10, 159, 0.35);
+}
+
+.col {
+  float: left;
+  width: 25%;
+  padding: 1em;
+}
+
+@media screen and (max-width: 999px) {
+  .col {
+    width: 50%;
+    float: right;
+  }
+  .disapear {
+    visibility: visible;
+  }
+}
+
+@media screen and (min-width: 999px) and (max-width: 1400px) {
+  .col {
+    width: 10%;
+  }
+  .disapear {
+    visibility: hidden; 
+  }
+}

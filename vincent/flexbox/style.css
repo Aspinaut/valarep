@@ -1,0 +1,44 @@
+.box {
+  margin: 1em;
+  padding: 1em;
+  width: 25%;
+}
+.first_line {
+  display: flex;
+  justify-content: space-around;
+}
+.second_line {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+.third_line {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+#_1 {
+  background-color: red;
+}
+#_2 {
+  background-color: blue;
+  order: 1;
+}
+#_3 {
+  background-color: turquoise;
+}
+#_4 {
+  background-color: green;
+}
+#_5 {
+  background-color: yellow;
+}
+#_6 {
+  background-color: pink;
+}
+#_7 {
+  background-color: purple;
+}
+#_8 {
+  background-color: orange;
+}

@@ -1,0 +1,100 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c140 79.160451, 2017/05/06-01:08:21        ">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+    xmlns:tiff="http://ns.adobe.com/tiff/1.0/"
+    xmlns:exif="http://ns.adobe.com/exif/1.0/"
+    xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+    xmlns:aux="http://ns.adobe.com/exif/1.0/aux/"
+    xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
+    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+   tiff:Make="NIKON CORPORATION"
+   tiff:Model="NIKON D3200"
+   tiff:Orientation="1"
+   exif:ExifVersion="0231"
+   exif:ExposureTime="1/40"
+   exif:ShutterSpeedValue="5321928/1000000"
+   exif:FNumber="4/1"
+   exif:ApertureValue="4/1"
+   exif:ExposureProgram="0"
+   exif:SensitivityType="2"
+   exif:ExposureBiasValue="0/6"
+   exif:MaxApertureValue="40/10"
+   exif:MeteringMode="5"
+   exif:LightSource="0"
+   exif:FocalLength="260/10"
+   exif:SensingMethod="2"
+   exif:FileSource="3"
+   exif:SceneType="1"
+   exif:FocalLengthIn35mmFilm="39"
+   exif:CustomRendered="0"
+   exif:ExposureMode="0"
+   exif:WhiteBalance="0"
+   exif:SceneCaptureType="0"
+   exif:GainControl="2"
+   exif:Contrast="0"
+   exif:Saturation="0"
+   exif:Sharpness="0"
+   exif:SubjectDistanceRange="0"
+   exif:DigitalZoomRatio="1/1"
+   exif:FocalPlaneXResolution="85041222/32768"
+   exif:FocalPlaneYResolution="85041222/32768"
+   exif:FocalPlaneResolutionUnit="3"
+   exif:DateTimeOriginal="2017-06-21T22:21:53.70"
+   xmp:CreatorTool="Ver.1.03"
+   xmp:ModifyDate="2017-06-21T22:21:53.70"
+   xmp:CreateDate="2017-06-21T22:21:53.70"
+   xmp:Rating="0"
+   xmp:MetadataDate="2020-06-15T17:05:07+02:00"
+   aux:SerialNumber="7515764"
+   aux:LensInfo="180/10 550/10 35/10 56/10"
+   aux:Lens="18.0-55.0 mm f/3.5-5.6"
+   aux:LensID="148"
+   aux:ImageNumber="1835"
+   aux:ApproximateFocusDistance="211/100"
+   photoshop:DateCreated="2017-06-21T22:21:53.70"
+   photoshop:SidecarForExtension="NEF"
+   photoshop:EmbeddedXMPDigest="2AD1AC5BA3E424E6C7C1B8C3F9C2974A"
+   xmpMM:DocumentID="98597F85B43285A6AB4C4A62600EE0B0"
+   xmpMM:OriginalDocumentID="98597F85B43285A6AB4C4A62600EE0B0"
+   xmpMM:InstanceID="xmp.iid:92bb2c49-f46b-f14b-9a10-5dd8bf3bfe80"
+   dc:format="image/x-nikon-nef"
+   crs:HasSettings="False"
+   crs:CropTop="0.025412"
+   crs:CropLeft="0.239787"
+   crs:CropBottom="0.836183"
+   crs:CropRight="0.778863"
+   crs:CropAngle="0"
+   crs:CropConstrainToWarp="1"
+   crs:CropWidth="1"
+   crs:CropHeight="1"
+   crs:CropUnit="3"
+   crs:HasCrop="True"
+   crs:AlreadyApplied="False"
+   crs:RawFileName="_DSC1008.NEF">
+   <exif:ISOSpeedRatings>
+    <rdf:Seq>
+     <rdf:li>3200</rdf:li>
+    </rdf:Seq>
+   </exif:ISOSpeedRatings>
+   <exif:Flash
+    exif:Fired="False"
+    exif:Return="0"
+    exif:Mode="2"
+    exif:Function="False"
+    exif:RedEyeMode="False"/>
+   <xmpMM:History>
+    <rdf:Seq>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:92bb2c49-f46b-f14b-9a10-5dd8bf3bfe80"
+      stEvt:when="2020-06-15T17:05:07+02:00"
+      stEvt:softwareAgent="Adobe Photoshop Camera Raw 11.3 (Windows)"
+      stEvt:changed="/metadata"/>
+    </rdf:Seq>
+   </xmpMM:History>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>

@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.tabs ul {
+  display: flex;
+  flex-direction: row;
+  padding: 100px;
+}
+
+.cart {
+  align-self: flex-end;
+}

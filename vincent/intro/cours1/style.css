@@ -1,0 +1,32 @@
+h1 {
+    color: blueviolet;
+    /* height : taille sur la hauteur
+        width : tille sur la largeur
+    */
+}
+
+body {
+    /* background-image: url("valarep.png");
+    background-size: cover; */
+}
+
+.content {
+    /*font-size : modifie la taille de la police*/
+    margin: 1em;
+    padding: 1em;
+    padding-right: 0em;
+    border: 3px solid black;
+}
+
+#foot {
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 2px solid black;
+}
