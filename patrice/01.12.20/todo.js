@@ -1,69 +1,135 @@
-let express = require('express');
-let mongo = require('mongodb');
-let server = express();
+const express = require("express");
+let mongo = require("mongodb");
+let serveur = express();
 
-// function pageDAccueil(){
+require('dotenv').config()
 
-// }
+serveur.use(express.json()); // Permet d'accepter du JSON
 
-// server.get('/', pageDAccueil)
-// server.get('/', function (){
-
-// });
+serveur.use(express.urlencoded({ extented: false })); // a ajouter pour recuperer des données dans un formulaire;
+serveur.use(express.static('public'));
 
 let db;
-let connectionString = `mongodb+srv://aspinaut:RYNuw3aP2PjDuDW@cluster0.tgbnc.mongodb.net/to_do_app?retryWrites=true&w=majority`;
-let options = { useNewUrlParser : true, useUnifiedTopology: true };
-mongo.connect(connectionString, options, (err, client) => {
-  db = client.db();
-  let query = {"author":"vincent"};
-  db.collection("choses").find(query).toArray(function(err, result) {
-    if (err) throw err;
-    return result;
-  });
-  console.log(process.env.NODE_ENV);
+let connectionString = `mongodb+srv://aspinaut:${process.env.MONGO_PASS}@cluster0.tgbnc.mongodb.net/to_do_app?retryWrites=true&w=majority`;
+let options = { useNewUrlParser: true, useUnifiedTopology: true };
 
-  server.listen(3000);
+mongo.connect(connectionString, options, (err, client) => {
+   /* console.log(err); /*si on veux voir les erreurs */
+  db = client.db();
+  serveur.listen(3000); // ne le mettre qu'apres une fois que tout est lancé
 });
 
+//call back en JS on lance plusieurs chose
 
-server.get('/', (req, res) => {
-    res.send(`<!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>A faire</title>
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        />
-      </head>
-      <body>
-        <div class="container">
-          <h1 class="py-1 text-center display-4">Choses à faire</h1>
+// serveur.get('/', (pageDAccueil))
 
-          <div class="p-3 shadow-sm jumbotron">
-            <form>
-              <div class="d-flex align-items-center">
-                <input
-                  class="mr-3 form-control"
-                  type="text"
-                  autofocus
-                  autocomplete="off"
-                  style="flex: 1"
-                />
-                <button class="btn btn-primary">Ajouter</button>
-              </div>
-            </form>
+// serveur.get ('/', function()) //fonction anonyme
+
+serveur.get("/", (req, res) => {
+  db.collection("choses").find().toArray((err, choses) => {
+      // console.log(choses);
+
+    // let lesLIEnConstruction = '';
+    //   choses.forEach(objetChose => {
+    //     const chose = objetChose.contenu;
+
+    //     const nouveauLI = `<li
+    //                           class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+    //                           <span>${chose}</span>
+    //                             <div>
+    //                               <button class="mr-1 btn btn-secondary btn-sm">Éditer</button>
+    //                               <button class="btn btn-danger btn-sm">Supprimer</button>
+    //                             </div>
+    //                         </li>`
+
+    //     lesLIEnConstruction += nouveauLI;
+    //   });
+
+  const htmlAEnvoyer = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Bonjour </title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="py-1 text-center display-4">Choses à faire</h1>
+
+      <div class="p-3 shadow-sm jumbotron">
+
+        <form action ="/ajouter" method="POST">
+          <div class="d-flex align-items-center">
+            <input
+              class="mr-3 form-control"
+              type="text"
+              autofocus
+              autocomplete="off"
+              style="flex: 1"
+              name="chose"
+            />
+            <button class="btn btn-primary" id="send">Ajouter</button>
           </div>
-
-          <ul class="pb-5 list-group">
-          <li>${result.author}</li>
-            <li>${result.comment}</li>
-          </ul>
+        </form>
         </div>
-      </body>
-    </html>`)
 
+      <ul class="pb-5 list-group">
+        ${choses.map(chose => `
+                            <li
+                              class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                              <span class="chose-text">${chose.contenu}</span>
+                                <div>
+                                  <button class="mr-1 btn btn-secondary btn-sm btn-edition" data-id=${chose._id}>Éditer</button>
+                                  <button class="btn btn-danger btn-sm btn-delete" data-id=${chose._id}>Supprimer</button>
+                                </div>
+                            </li>
+                            `).join(' ')}
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>
+`;
+res.send(htmlAEnvoyer);
+  });
+});
+// Le .join permet de remplacer les crochets, les virgules etc par des espaces dans le cas present
+
+serveur.post("/ajouter", function (req, res) {
+  // res.send('bien recu');
+  //recuperer la valeur du formulaire
+  // console.log(req.body.chose); tester le reponse
+  let nouvelleChose = { contenu: req.body.chose };
+  db.collection("choses").insertOne(nouvelleChose,
+    () => {
+      // res.send("Bien recu !");
+      res.redirect('/');
+    });
+});
+
+serveur.post('/editer', (req, res) =>{
+  const nouveauContenu = req.body.contenu;
+  const idChose = req.body.id;
+  let idDocument = new mongo.ObjectId(idChose);
+
+  // findOneAndUpdate (document_a_update, champs_a_updaté + valeur, callback)
+  db.collection('choses').findOneAndUpdate({_id: idDocument }, { $set : { contenu: nouveauContenu } }, () => {
+
+   res.send('Element mis à jour')
+  });
+});
+
+serveur.post('/supprimer', (req, res)=>{
+  const idChose = req.body.id;
+  let idDocument = new mongo.ObjectId(idChose);
+  console.log(idDocument);
+  db.collection('choses').deleteOne({_id: idDocument }, () => {
+   res.send('Element supprimé');
+  });
 });
