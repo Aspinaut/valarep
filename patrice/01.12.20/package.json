@@ -10,8 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "env-cmd": "^10.1.0",
     "express": "^4.17.1",
     "mongodb": "^3.6.3",
     "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

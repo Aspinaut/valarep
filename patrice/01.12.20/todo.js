@@ -2,7 +2,6 @@ let express = require('express');
 let mongo = require('mongodb');
 let server = express();
 
-
 // function pageDAccueil(){
 
 // }
@@ -13,16 +12,17 @@ let server = express();
 // });
 
 let db;
-let connectionString = "mongodb+srv://aspinaut:mdp@cluster0.tgbnc.mongodb.net/to_do_app?retryWrites=true&w=majority";
-let options = { useNewUrlParser : true, useUnifiedTopology: true};
+let connectionString = `mongodb+srv://aspinaut:RYNuw3aP2PjDuDW@cluster0.tgbnc.mongodb.net/to_do_app?retryWrites=true&w=majority`;
+let options = { useNewUrlParser : true, useUnifiedTopology: true };
 mongo.connect(connectionString, options, (err, client) => {
   db = client.db();
   let query = {"author":"vincent"};
   db.collection("choses").find(query).toArray(function(err, result) {
     if (err) throw err;
-    console.log(result);
     return result;
   });
+  console.log(process.env.NODE_ENV);
+
   server.listen(3000);
 });
 
