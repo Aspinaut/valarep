@@ -1,3 +1,18 @@
+document.getElementById('ajout-form').addEventListener('submit', e =>{
+  console.log("ok")
+  e.preventDefault();
+  const nouvelleChose = document.getElementById('chose-input').value;
+  axios.post('/ajouter', { chose: nouvelleChose }).then(() => {
+      let ul = document.querySelector('.list-group');
+      console.log(res);
+      // const choseAInserer = res.data
+      document.getElementById('choses-ul').insertAdjacentHTML('beforeend', 'toto');
+      // requête terminée
+  }).catch(() => {
+      console.log("Un problème est survenu durant la maj");
+  });
+});
+
 document.addEventListener('click', e => {
   if (e.target.classList.contains('btn-edition')){
       // alert('btn');
@@ -15,16 +30,16 @@ document.addEventListener('click', e => {
           console.log("Un problème est survenu durant la maj");
       });
     }
-    if (e.target.classList.contains('btn-delete')){
-        // alert('btn');
-        let li  =  e.target.parentElement.parentElement;
+  if (e.target.classList.contains('btn-delete')){
+      // alert('btn');
+      let li  =  e.target.parentElement.parentElement;
 
-        let idChose = e.target.getAttribute('data-id');
-        axios.post('/supprimer', { id: idChose }).then(() => {
-            li.remove();
+      let idChose = e.target.getAttribute('data-id');
+      axios.post('/supprimer', { id: idChose }).then(() => {
+          li.remove();
 
-        }).catch(() => {
-            console.log("Un problème est survenu durant le delete");
-        });
-      }
+      }).catch(() => {
+          console.log("Un problème est survenu durant le delete");
+      });
+    }
 });

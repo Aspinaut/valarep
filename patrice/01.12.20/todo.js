@@ -63,22 +63,22 @@ serveur.get("/", (req, res) => {
 
       <div class="p-3 shadow-sm jumbotron">
 
-        <form action ="/ajouter" method="POST">
+        <form id="ajout-form" action="/ajouter" method="POST">
           <div class="d-flex align-items-center">
             <input
               class="mr-3 form-control"
               type="text"
               autofocus
-              autocomplete="off"
+              autocomplete="off" id="chose-input"
               style="flex: 1"
               name="chose"
             />
-            <button class="btn btn-primary" id="send">Ajouter</button>
+            <button class="btn btn-primary btn-add" id="send">Ajouter</button>
           </div>
         </form>
         </div>
 
-      <ul class="pb-5 list-group">
+      <ul id="choses-ul" class="pb-5 list-group">
         ${choses.map(chose => `
                             <li
                               class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
@@ -107,9 +107,9 @@ serveur.post("/ajouter", function (req, res) {
   // console.log(req.body.chose); tester le reponse
   let nouvelleChose = { contenu: req.body.chose };
   db.collection("choses").insertOne(nouvelleChose,
-    () => {
-      // res.send("Bien recu !");
-      res.redirect('/');
+    (err, info) => {
+      res.send(info.ops[0]);
+      // res.redirect('/');
     });
 });
 
@@ -121,14 +121,13 @@ serveur.post('/editer', (req, res) =>{
   // findOneAndUpdate (document_a_update, champs_a_updaté + valeur, callback)
   db.collection('choses').findOneAndUpdate({_id: idDocument }, { $set : { contenu: nouveauContenu } }, () => {
 
-   res.send('Element mis à jour')
+   res.send('Element mis à jour');
   });
 });
 
 serveur.post('/supprimer', (req, res)=>{
   const idChose = req.body.id;
   let idDocument = new mongo.ObjectId(idChose);
-  console.log(idDocument);
   db.collection('choses').deleteOne({_id: idDocument }, () => {
    res.send('Element supprimé');
   });
