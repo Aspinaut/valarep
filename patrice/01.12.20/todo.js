@@ -1,6 +1,9 @@
 const express = require("express");
 let mongo = require("mongodb");
 let serveur = express();
+let sanitizer = require('sanitize-html');
+
+
 
 require('dotenv').config()
 
@@ -79,18 +82,10 @@ serveur.get("/", (req, res) => {
         </div>
 
       <ul id="choses-ul" class="pb-5 list-group">
-        ${choses.map(chose => `
-                            <li
-                              class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                              <span class="chose-text">${chose.contenu}</span>
-                                <div>
-                                  <button class="mr-1 btn btn-secondary btn-sm btn-edition" data-id=${chose._id}>Éditer</button>
-                                  <button class="btn btn-danger btn-sm btn-delete" data-id=${chose._id}>Supprimer</button>
-                                </div>
-                            </li>
-                            `).join(' ')}
+
       </ul>
     </div>
+    <script>let chosesClient = ${JSON.stringify(choses)}</script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/client.js"></script>
   </body>
@@ -102,9 +97,7 @@ res.send(htmlAEnvoyer);
 // Le .join permet de remplacer les crochets, les virgules etc par des espaces dans le cas present
 
 serveur.post("/ajouter", function (req, res) {
-  // res.send('bien recu');
-  //recuperer la valeur du formulaire
-  // console.log(req.body.chose); tester le reponse
+  const choseAssainie = sanitizer(req.body.chose, { allowedTags: [], allowedAttributes: {} });
   let nouvelleChose = { contenu: req.body.chose };
   db.collection("choses").insertOne(nouvelleChose,
     (err, info) => {

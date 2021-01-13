@@ -1,13 +1,37 @@
+
+chosesClient.forEach(chose => {
+  document.querySelector('.list-group').insertAdjacentHTML('beforeend', genererListItem(chose.contenu, chose._id))
+});
+
+// autre méthode
+
+// const lisLi = chosesClient.map(chose =>
+//   genererListItem(chose.contenu, chose._id);
+// );
+// document.getElementById('choses-ul').insertAdjacentHTML('beforeend', lisLi.join())
+
+
+
+function genererListItem(resContent, resId) {
+  return `<li
+    class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+    <span class="chose-text">${resContent}</span>
+      <div>
+        <button class="mr-1 btn btn-secondary btn-sm btn-edition" data-id=${resId}>Éditer</button>
+        <button class="btn btn-danger btn-sm btn-delete" data-id=${resId}>Supprimer</button>
+      </div>
+  </li>`;
+}
+
 document.getElementById('ajout-form').addEventListener('submit', e =>{
-  console.log("ok")
   e.preventDefault();
-  const nouvelleChose = document.getElementById('chose-input').value;
-  axios.post('/ajouter', { chose: nouvelleChose }).then(() => {
+  const choseInput = document.getElementById('chose-input')
+  const nouvelleChose = choseInput.value;
+  axios.post('/ajouter', { chose: nouvelleChose }).then((res) => {
       let ul = document.querySelector('.list-group');
-      console.log(res);
-      // const choseAInserer = res.data
-      document.getElementById('choses-ul').insertAdjacentHTML('beforeend', 'toto');
-      // requête terminée
+      document.getElementById('choses-ul').insertAdjacentHTML('beforeend', genererListItem(res.data.contenu, res.data._id));
+      choseInput.focus();
+      choseInput.value = '';
   }).catch(() => {
       console.log("Un problème est survenu durant la maj");
   });
