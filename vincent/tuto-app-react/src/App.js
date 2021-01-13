@@ -1,21 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
-import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { HashRouter, Switch, Route, Link } from 'react-router-dom'
 import React, {useState} from 'react';
+import Movies from './Movies';
+import Cinemas from './Movies';
 
-const movies = require('./movies.json');
 
 function App() {
-  const state = useState(0)
+  const state = useState(0);
   return (
-    <div className="App">
-      <ul className="movie-list">
-        movies.map(movie => {
-          `<li>${movie.Title}</li>`
-        })
-
+    <HashRouter>
+    <nav>
+      <ul>
+        <li>
+          {/* http://localhost:3000/# */}
+          <Link to='/'>Films</Link>
+        </li>
+        <li>
+          {/* http://localhost:3000/#/cinemas */}
+          <Link to='/cinemas'>Cinemas</Link>
+        </li>
       </ul>
-    </div>
+    </nav>
+    <Switch>
+      <Route path='/' component={Movies} />
+      <Route path='/movies' component={Movies} />
+      <Route path='/cinemas' component={Cinemas} />
+    </Switch>
+    </HashRouter>
   );
 }
 
