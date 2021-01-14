@@ -11,7 +11,7 @@ const Cinemas = () => {
           <div class="card-body">
           <img src={faker.image.nightlife()} class="card-img-top"></img>
 
-            <h5 class="card-title">{cinema.nom}</h5>
+            <h5 class="card-title">{cinema.fields.nom}</h5>
             {/* http://localhost:3000/cinema/ */}
             <Link class="btn btn-primary" to=''>Voir plus</Link>
           </div>
