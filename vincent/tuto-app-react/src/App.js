@@ -6,14 +6,14 @@ import React, {useState} from 'react';
 import Movies from './Movies';
 import Cinemas from './Cinemas';
 
-const Movie = ({match}) => {
-  const movie = moviesList.find((movie) => {
-    return parseInt(match.params.movieId) === movie.id
-  })
-  return <>
-
-  </>
-};
+// const Movie = ({match}) => {
+//   const movieItem = moviesList.find((movie) => {
+//     return parseInt(match.params.movieId) === movie.id
+//   })
+//   return <>
+//
+//   </>
+// };
 
 function App() {
   const state = useState(0);
@@ -30,7 +30,6 @@ function App() {
       </ul>
     </nav>
     <Switch>
-      <Route path={`/movie/:movieId`} component={Movie} />
       <Route path='/cinemas' component={Cinemas} />
       <Route path='/movies' component={Movies} />
       <Route path='/' component={Movies} />
